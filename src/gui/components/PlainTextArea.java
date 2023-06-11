@@ -12,7 +12,7 @@ public class PlainTextArea {
     KeyHandler keyHandler;
     JScrollPane scrollPane;
 
-    public PlainTextArea(Frame frame) {
+    public PlainTextArea(JPanel container) {
         keyHandler = new KeyHandler();
 
         plainText = new JTextArea();
@@ -35,7 +35,7 @@ public class PlainTextArea {
         });
 
         scrollPane = new JScrollPane(plainText, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        frame.window.add(scrollPane);
+        container.add(scrollPane);
     }
 
     public void setContent(String content) {
