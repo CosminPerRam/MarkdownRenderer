@@ -1,7 +1,5 @@
 package gui.components;
 
-import gui.GUI;
-
 import javax.swing.*;
 import utilities.File;
 import utilities.Scope;
@@ -20,8 +18,8 @@ public class MenuBar {
         createMenuBar(frame.window);
 
         createFileMenu();
-        createAboutMenu();
         createSettingsMenu();
+        createAboutMenu();
     }
 
     public void createMenuBar(JFrame window) {
