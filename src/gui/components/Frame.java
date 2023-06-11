@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class Frame {
     public JFrame window;
+    String name;
 
-    public Frame() {
-        window = new JFrame("Markdown Renderer");
-        window.setSize(1280, 720);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Frame(String name) {
+        this.name = name;
+        window = new JFrame(name);
     }
 
     public void toggleWindowVisibility() {
@@ -16,6 +16,6 @@ public class Frame {
     }
 
     public void setScopedTitle(String title) {
-        window.setTitle("Markdown Renderer - " + title);
+        window.setTitle(name + " - " + title);
     }
 }

@@ -1,25 +1,23 @@
 package gui.components;
 
 import javax.swing.*;
+
+import gui.About;
+import gui.Settings;
 import utilities.File;
 import utilities.Scope;
 
 public class MenuBar {
     JMenuBar menuBar;
 
-    JMenu fileMenu;
-    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs;
-
-    JMenu aboutMenu;
-
-    JMenu settingsMenu;
+    JMenu fileMenu, optionsMenu;
+    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs, optionsAbout, optionsSettings;
 
     public MenuBar(Frame frame) {
         createMenuBar(frame.window);
 
         createFileMenu();
-        createSettingsMenu();
-        createAboutMenu();
+        createOptionsMenu();
     }
 
     public void createMenuBar(JFrame window) {
@@ -48,13 +46,16 @@ public class MenuBar {
         fileMenu.add(fileOpen);
     }
 
-    public void createAboutMenu() {
-        aboutMenu = new JMenu("About");
-        menuBar.add(aboutMenu);
-    }
+    public void createOptionsMenu() {
+        optionsMenu = new JMenu("Options");
+        menuBar.add(optionsMenu);
 
-    public void createSettingsMenu() {
-        settingsMenu = new JMenu("Settings");
-        menuBar.add(settingsMenu);
+        optionsAbout = new JMenuItem("About");
+        optionsAbout.addActionListener(e -> About.toggleVisibility());
+        optionsMenu.add(optionsAbout);
+
+        optionsSettings = new JMenuItem("Settings");
+        optionsSettings.addActionListener(e -> Settings.toggleVisibility());
+        optionsMenu.add(optionsSettings);
     }
 }

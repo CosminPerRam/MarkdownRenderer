@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 public class File {
     public static void openWithUI() {
-        FileDialog fd = new FileDialog(GUI.instance.frame.window, "Open", FileDialog.LOAD);
+        FileDialog fd = new FileDialog(GUI.frame.window, "Open", FileDialog.LOAD);
         fd.setVisible(true);
 
         if (fd.getFile() == null)
@@ -23,7 +23,7 @@ public class File {
     }
 
     public static void saveWithUI() {
-        FileDialog fd = new FileDialog(GUI.instance.frame.window, "Save", FileDialog.SAVE);
+        FileDialog fd = new FileDialog(GUI.frame.window, "Save", FileDialog.SAVE);
         fd.setVisible(true);
 
         if (fd.getFile() == null)

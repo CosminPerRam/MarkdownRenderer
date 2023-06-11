@@ -5,21 +5,24 @@ import gui.components.MenuBar;
 import gui.components.PlainTextArea;
 import utilities.Scope;
 
+import javax.swing.*;
+
 public class GUI {
-    public static GUI instance = null;
+    static public Frame frame;
 
-    public Frame frame;
+    static MenuBar menuBar;
+    static public PlainTextArea plainTextArea;
 
-    MenuBar menuBar;
-    public PlainTextArea plainTextArea;
+    public static void initialize() {
+        About.initialize();
+        Settings.initialize();
 
-    public GUI() {
-        frame = new Frame();
+        frame = new Frame("Markdown Renderer");
+        frame.window.setSize(1280, 720);
+        frame.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         plainTextArea = new PlainTextArea(frame);
         menuBar = new MenuBar(frame);
-
-        instance = this;
 
         Scope.setBrandNewScope();
 

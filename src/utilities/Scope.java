@@ -14,7 +14,7 @@ public class Scope {
     public static void setScope(String newFileAddress, String newFileName, String fileContent) {
         setPath(newFileAddress, newFileName);
 
-        GUI.instance.plainTextArea.setContent(fileContent);
+        GUI.plainTextArea.setContent(fileContent);
 
         setEdited(false);
     }
@@ -23,11 +23,11 @@ public class Scope {
         fileAddress = newFileAddress;
         fileName = newFileName;
 
-        GUI.instance.frame.setScopedTitle(fileName);
+        GUI.frame.setScopedTitle(fileName);
     }
 
     public static void setEdited(boolean isEdited) {
-        GUI.instance.frame.setScopedTitle(fileName + (isEdited ? " [modified]" : ""));
+        GUI.frame.setScopedTitle(fileName + (isEdited ? " [modified]" : ""));
     }
 
     public static void save() {
@@ -40,7 +40,7 @@ public class Scope {
     }
 
     public static String getContent() {
-        return GUI.instance.plainTextArea.getContent();
+        return GUI.plainTextArea.getContent();
     }
 
     public static String getFileLocation() {
