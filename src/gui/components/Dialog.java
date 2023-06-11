@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class Dialog extends Frame {
     JDialog dialog;
-    String name;
 
     public Dialog(String name) {
         super(name);
