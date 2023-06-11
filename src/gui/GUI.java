@@ -1,43 +1,25 @@
-import javax.swing.*;
+package gui;
+
+import gui.components.Frame;
+import gui.components.MenuBar;
+import gui.components.PlainTextArea;
 
 public class GUI {
-    JFrame window;
+    public static GUI instance = null;
 
-    JTextArea plainText;
-    JScrollPane scrollPane;
+    Frame frame;
 
-    JMenuBar menuBar;
-    JMenu fileMenu;
+    MenuBar menuBar;
+    public PlainTextArea plainTextArea;
 
     public GUI() {
-        createWindow();
-        createPlainText();
-        createMenuBar();
+        frame = new Frame();
 
-        toggleWindowVisibility();
-    }
+        plainTextArea = new PlainTextArea(frame);
+        menuBar = new MenuBar(frame);
 
-    public void toggleWindowVisibility() {
-        window.setVisible(!window.isVisible());
-    }
+        frame.toggleWindowVisibility();
 
-    public void createWindow() {
-        window = new JFrame("Markdown Renderer");
-        window.setSize(1280, 720);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public void createPlainText() {
-        plainText = new JTextArea();
-        scrollPane = new JScrollPane(plainText, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        window.add(scrollPane);
-    }
-
-    public void createMenuBar() {
-        menuBar = new JMenuBar();
-        window.setJMenuBar(menuBar);
-
-        fileMenu = new JMenu("File");
-        menuBar.add(fileMenu);
+        instance = this;
     }
 }
