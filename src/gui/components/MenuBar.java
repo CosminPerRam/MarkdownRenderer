@@ -3,8 +3,8 @@ package gui.components;
 import gui.GUI;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import utilities.File;
+import utilities.Scope;
 
 public class MenuBar {
     JMenuBar menuBar;
@@ -34,16 +34,19 @@ public class MenuBar {
         menuBar.add(fileMenu);
 
         fileNew = new JMenuItem("New");
-        fileNew.addActionListener(e -> GUI.instance.plainTextArea.clear());
+        fileNew.addActionListener(e -> Scope.setBrandNewScope());
         fileMenu.add(fileNew);
 
         fileSave = new JMenuItem("Save");
+        fileSave.addActionListener(e -> Scope.save());
         fileMenu.add(fileSave);
 
         fileSaveAs = new JMenuItem("Save as");
+        fileSaveAs.addActionListener(e -> File.saveWithUI());
         fileMenu.add(fileSaveAs);
 
         fileOpen = new JMenuItem("Open");
+        fileOpen.addActionListener(e -> File.openWithUI());
         fileMenu.add(fileOpen);
     }
 

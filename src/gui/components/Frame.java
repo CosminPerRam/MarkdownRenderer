@@ -14,4 +14,8 @@ public class Frame {
     public void toggleWindowVisibility() {
         window.setVisible(!window.isVisible());
     }
+
+    public void setScopedTitle(String title) {
+        window.setTitle("Markdown Renderer - " + title);
+    }
 }
