@@ -2,6 +2,8 @@ package utilities;
 
 import gui.GUI;
 
+import java.awt.image.BufferedImage;
+
 public class Scope {
     private static String fileAddress = "";
     private static String fileName = "";
@@ -35,16 +37,25 @@ public class Scope {
     }
 
     public static void save() {
+        String content = getContent();
         if (fileAddress.isEmpty())
-            File.saveWithUI();
+            Files.saveWithUI(content);
         else
-            File.overwriteFile(getFileLocation(), getContent());
+            Files.overwriteFile(getFileLocation(), content);
 
         setEdited(false);
     }
 
     public static String getContent() {
         return GUI.plainTextArea.getContent();
+    }
+
+    public static String getMarkdownContent() {
+        return GUI.markdownRenderArea.getContent();
+    }
+
+    public static BufferedImage getMarkdownImage() {
+        return GUI.markdownRenderArea.getImage();
     }
 
     public static String getFileLocation() {

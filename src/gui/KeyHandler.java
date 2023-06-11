@@ -1,6 +1,6 @@
 package gui;
 
-import utilities.File;
+import utilities.Files;
 import utilities.Scope;
 
 import java.awt.event.KeyEvent;
@@ -20,7 +20,7 @@ public class KeyHandler implements KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_S -> Scope.save();
-            case KeyEvent.VK_O -> File.openWithUI();
+            case KeyEvent.VK_O -> Files.openWithUI();
             case KeyEvent.VK_N -> Scope.setBrandNewScope();
         }
     }

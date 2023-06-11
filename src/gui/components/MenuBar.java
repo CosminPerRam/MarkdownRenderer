@@ -4,19 +4,20 @@ import javax.swing.*;
 
 import gui.About;
 import gui.Settings;
-import utilities.File;
+import utilities.Files;
 import utilities.Scope;
 
 public class MenuBar {
     JMenuBar menuBar;
 
-    JMenu fileMenu, optionsMenu;
-    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs, optionsAbout, optionsSettings;
+    JMenu fileMenu, optionsMenu, markdownMenu;
+    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs, optionsAbout, optionsSettings, markdownExport, markdownRender;
 
     public MenuBar(Frame frame) {
         createMenuBar(frame.window);
 
         createFileMenu();
+        createMarkdownMenu();
         createOptionsMenu();
     }
 
@@ -38,11 +39,11 @@ public class MenuBar {
         fileMenu.add(fileSave);
 
         fileSaveAs = new JMenuItem("Save as");
-        fileSaveAs.addActionListener(e -> File.saveWithUI());
+        fileSaveAs.addActionListener(e -> Files.saveWithUI(Scope.getContent()));
         fileMenu.add(fileSaveAs);
 
         fileOpen = new JMenuItem("Open");
-        fileOpen.addActionListener(e -> File.openWithUI());
+        fileOpen.addActionListener(e -> Files.openWithUI());
         fileMenu.add(fileOpen);
     }
 
@@ -57,5 +58,18 @@ public class MenuBar {
         optionsSettings = new JMenuItem("Settings");
         optionsSettings.addActionListener(e -> Settings.toggleVisibility());
         optionsMenu.add(optionsSettings);
+    }
+
+    public void createMarkdownMenu() {
+        markdownMenu = new JMenu("Markdown");
+        menuBar.add(markdownMenu);
+
+        markdownExport = new JMenuItem("Export");
+        markdownExport.addActionListener(e -> Files.saveWithUI(Scope.getMarkdownContent()));
+        markdownMenu.add(markdownExport);
+
+        markdownRender = new JMenuItem("Render");
+        markdownRender.addActionListener(e -> Files.saveImageWithUI(Scope.getMarkdownImage()));
+        markdownMenu.add(markdownRender);
     }
 }
