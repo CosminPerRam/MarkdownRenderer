@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MarkDownRule {
-    String name, regex, template;
+    public String name, regex, template;
 
     public MarkDownRule(String name, String regex, String template) {
         this.name = name;

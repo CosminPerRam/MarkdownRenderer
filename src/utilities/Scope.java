@@ -32,7 +32,7 @@ public class Scope {
         GUI.frame.setScopedTitle(fileName + (isEdited ? " [modified]" : ""));
 
         if(isEdited) {
-            GUI.markdownRenderArea.update(GUI.plainTextArea.getContent());
+            GUI.markdownRenderArea.update();
         }
     }
 

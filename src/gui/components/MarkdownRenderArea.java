@@ -1,5 +1,6 @@
 package gui.components;
 
+import gui.GUI;
 import utilities.MarkDown;
 
 import javax.swing.*;
@@ -19,8 +20,8 @@ public class MarkdownRenderArea {
         container.add(renderArea);
     }
 
-    public void update(String content) {
-        String converted = markdown.convert(content);
+    public void update() {
+        String converted = markdown.convert(GUI.plainTextArea.getContent());
         renderArea.setText(converted);
     }
 

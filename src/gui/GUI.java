@@ -19,9 +19,6 @@ public class GUI {
     static public MarkdownRenderArea markdownRenderArea;
 
     public static void initialize() {
-        About.initialize();
-        Settings.initialize();
-
         frame = new Frame("Markdown Renderer");
         frame.window.setSize(1280, 720);
         frame.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +35,13 @@ public class GUI {
 
         Scope.setBrandNewScope();
 
+        About.initialize();
+        Rules.initialize();
+
         frame.toggleWindowVisibility();
+    }
+
+    public static void showError(String text) {
+        JOptionPane.showMessageDialog(frame.window, text, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

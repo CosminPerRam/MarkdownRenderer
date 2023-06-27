@@ -3,7 +3,7 @@ package gui.components;
 import javax.swing.*;
 
 import gui.About;
-import gui.Settings;
+import gui.Rules;
 import utilities.Files;
 import utilities.Scope;
 
@@ -11,7 +11,10 @@ public class MenuBar {
     JMenuBar menuBar;
 
     JMenu fileMenu, optionsMenu, markdownMenu;
-    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs, optionsAbout, optionsSettings, markdownExport, markdownRender;
+
+    JMenuItem fileNew, fileSave, fileOpen, fileSaveAs;
+    JMenuItem optionsAbout;
+    JMenuItem markdownExport, markdownRender, markdownRules;
 
     public MenuBar(Frame frame) {
         createMenuBar(frame.window);
@@ -54,15 +57,15 @@ public class MenuBar {
         optionsAbout = new JMenuItem("About");
         optionsAbout.addActionListener(e -> About.toggleVisibility());
         optionsMenu.add(optionsAbout);
-
-        optionsSettings = new JMenuItem("Settings");
-        optionsSettings.addActionListener(e -> Settings.toggleVisibility());
-        optionsMenu.add(optionsSettings);
     }
 
     public void createMarkdownMenu() {
         markdownMenu = new JMenu("Markdown");
         menuBar.add(markdownMenu);
+
+        markdownRules = new JMenuItem("Rules");
+        markdownRules.addActionListener(e -> Rules.toggleVisibility());
+        markdownMenu.add(markdownRules);
 
         markdownExport = new JMenuItem("Export");
         markdownExport.addActionListener(e -> Files.saveWithUI(Scope.getMarkdownContent()));
