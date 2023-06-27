@@ -4,6 +4,7 @@ import gui.components.Frame;
 import gui.components.MarkdownRenderArea;
 import gui.components.MenuBar;
 import gui.components.PlainTextArea;
+import utilities.Logger;
 import utilities.Scope;
 
 import javax.swing.*;
@@ -19,6 +20,8 @@ public class GUI {
     static public MarkdownRenderArea markdownRenderArea;
 
     public static void initialize() {
+        Logger.initialize();
+
         frame = new Frame("CosminPerRam - Markdown Renderer");
         frame.window.setSize(1280, 720);
         frame.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
