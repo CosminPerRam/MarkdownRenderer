@@ -7,18 +7,21 @@ import java.awt.image.BufferedImage;
 
 public class MarkdownRenderArea {
     JEditorPane renderArea;
+    MarkDown markdown;
 
     public MarkdownRenderArea(JPanel container) {
         renderArea = new JEditorPane();
         renderArea.setEditable(false);
         renderArea.setContentType("text/html");
 
+        markdown = new MarkDown();
+
         container.add(renderArea);
     }
 
     public void update(String content) {
-        String markdown = MarkDown.convert(content);
-        renderArea.setText(markdown);
+        String converted = markdown.convert(content);
+        renderArea.setText(converted);
     }
 
     public String getContent() {
