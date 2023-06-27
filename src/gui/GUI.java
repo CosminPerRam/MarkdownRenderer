@@ -35,7 +35,6 @@ public class GUI {
 
         Scope.setBrandNewScope();
 
-        About.initialize();
         Rules.initialize();
 
         frame.toggleWindowVisibility();
