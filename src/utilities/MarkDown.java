@@ -14,6 +14,7 @@ public class MarkDown {
         add(new MarkDownRule("Bold underscore", "__([^_]+)__", "<b>$1</b>"));
         add(new MarkDownRule("Italics underscore", "_([^_`]+)_", "<i>$1</i>"));
         add(new MarkDownRule("Paragraph", "([^\\n]+\\n?)", "<p>$1</p>"));
+        add(new MarkDownRule("Inline Code", "\\`([^`]+)\\`", "<code>$1</code>"));
 
         add(new MarkDownRule("List", "([^\\n]+)(\\-)([^\\n]+)", "<ul><li>$3</li></ul>"));
     }};
