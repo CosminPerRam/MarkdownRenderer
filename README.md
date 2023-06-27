@@ -1,5 +1,6 @@
 # MarkdownRenderer
 This is a project made for my "*Advanced Programming Methods*" university class.
+![GUI screenshot](program_screenshot.png)
 
 It is made in **Java** (a requirement).
 And uses **Swing** as the UI framework.
