@@ -10,6 +10,11 @@ import utilities.Scope;
 import javax.swing.*;
 import java.awt.*;
 
+import static utilities.Logger.Log;
+
+/**
+ * The Graphical User Interface.
+ */
 public class GUI {
     static public Frame frame;
 
@@ -19,6 +24,9 @@ public class GUI {
     static public PlainTextArea plainTextArea;
     static public MarkdownRenderArea markdownRenderArea;
 
+    /**
+     * Initialize our Graphical User Interface.
+     */
     public static void initialize() {
         Logger.initialize();
 
@@ -41,9 +49,16 @@ public class GUI {
         Rules.initialize();
 
         frame.toggleWindowVisibility();
+
+        Log().info("The GUI has been initialized.");
     }
 
+    /**
+     * Show that something has gone wrong to the user.
+     * @param text what gone wrong explained
+     */
     public static void showError(String text) {
         JOptionPane.showMessageDialog(frame.window, text, "Error", JOptionPane.ERROR_MESSAGE);
+        Log().error(text);
     }
 }

@@ -7,11 +7,18 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+/**
+ * The text area editor.
+ */
 public class PlainTextArea {
     JTextArea plainText;
     KeyHandler keyHandler;
     JScrollPane scrollPane;
 
+    /**
+     * Our text editor area constructor.
+     * @param container parent container
+     */
     public PlainTextArea(JPanel container) {
         keyHandler = new KeyHandler();
 
@@ -38,10 +45,18 @@ public class PlainTextArea {
         container.add(scrollPane);
     }
 
+    /**
+     * Update's the text areas content.
+     * @param content Specified content
+     */
     public void setContent(String content) {
         plainText.setText(content);
     }
 
+    /**
+     * Gets the text area content.
+     * @return Text area's content.
+     */
     public String getContent() {
         return plainText.getText();
     }

@@ -6,8 +6,10 @@ import utilities.Scope;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * A helper class the implements the key combinations for actions.
+ */
 public class KeyHandler implements KeyListener {
-
     @Override
     public void keyTyped(KeyEvent e) {
 

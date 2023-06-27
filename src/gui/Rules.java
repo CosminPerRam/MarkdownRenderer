@@ -11,6 +11,11 @@ import java.awt.*;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static utilities.Logger.Log;
+
+/**
+ * The rules' dialog.
+ */
 public class Rules {
     static JDialog dialog;
     static boolean visible = false;
@@ -21,6 +26,9 @@ public class Rules {
 
     static JTextField name, regex, template;
 
+    /**
+     * Initialize the rules' dialog.
+     */
     public static void initialize() {
         dialog = new JDialog(GUI.frame.window, "Markdown - Rules", true);
         dialog.setResizable(false);
@@ -56,12 +64,17 @@ public class Rules {
         scrollTable = new JScrollPane(table);
         table.setFillsViewportHeight(true);
         mainPanel.add(scrollTable);
-        updateTable();
+        updateRules();
 
         dialog.setContentPane(mainPanel);
+
+        Log().info("Rules dialog has been initialized.");
     }
 
-    public static void updateTable() {
+    /**
+     * Update the table and re-render the markdown area.
+     */
+    public static void updateRules() {
         Object[][] data = new Object[MarkDown.rules.size()][3];
         for(int i = 0; i < MarkDown.rules.size(); i++) {
             MarkDownRule rule = MarkDown.rules.get(i);
@@ -78,17 +91,23 @@ public class Rules {
         GUI.markdownRenderArea.update();
     }
 
+    /**
+     * Removes a rule that is selected from the table.
+     */
     public static void removeSelected() {
         int index = table.getSelectedRow();
         if(index == -1) {
             GUI.showError("You need to select a row to delete.");
         } else {
             String selectedRuleName = table.getValueAt(index, 0).toString();
-            MarkDown.rules.removeIf(rule -> Objects.equals(rule.name, selectedRuleName));
-            updateTable();
+            boolean ignored = MarkDown.removeRule(selectedRuleName);
+            updateRules();
         }
     }
 
+    /**
+     * Adds a new rule! The data is taken from the UI text fields.
+     */
     public static void addRule() {
         String ruleName = name.getText(), ruleRegex = regex.getText(), ruleTemplate = template.getText();
 
@@ -105,9 +124,12 @@ public class Rules {
         }
 
         MarkDown.addRule(new MarkDownRule(ruleName, ruleRegex, ruleTemplate));
-        updateTable();
+        updateRules();
     }
 
+    /**
+     * Toggle the dialogs' visibility.
+     */
     public static void toggleVisibility() {
         dialog.setVisible(!visible);
     }

@@ -6,6 +6,9 @@ import gui.Rules;
 import utilities.Files;
 import utilities.Scope;
 
+/**
+ * UI menu bar.
+ */
 public class MenuBar {
     JMenuBar menuBar;
 
@@ -14,6 +17,10 @@ public class MenuBar {
     JMenuItem fileNew, fileSave, fileOpen, fileSaveAs;
     JMenuItem markdownExport, markdownRender, markdownRules;
 
+    /**
+     * Initialize our menu bar.
+     * @param frame Parent frame.
+     */
     public MenuBar(Frame frame) {
         createMenuBar(frame.window);
 
@@ -21,12 +28,19 @@ public class MenuBar {
         createMarkdownMenu();
     }
 
-    public void createMenuBar(JFrame window) {
+    /**
+     * Initialize the bar.
+     * @param window Parent window.
+     */
+    private void createMenuBar(JFrame window) {
         menuBar = new JMenuBar();
         window.setJMenuBar(menuBar);
     }
 
-    public void createFileMenu() {
+    /**
+     * Initialize the file menu.
+     */
+    private void createFileMenu() {
         fileMenu = new JMenu("File");
         menuBar.add(fileMenu);
 
@@ -47,7 +61,10 @@ public class MenuBar {
         fileMenu.add(fileOpen);
     }
 
-    public void createMarkdownMenu() {
+    /**
+     * Initialize the markdown menu.
+     */
+    private void createMarkdownMenu() {
         markdownMenu = new JMenu("Markdown");
         menuBar.add(markdownMenu);
 

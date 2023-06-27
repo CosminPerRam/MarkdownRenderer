@@ -3,15 +3,29 @@ package utilities;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A markdown rule.
+ */
 public class MarkDownRule {
     public String name, regex, template;
 
+    /**
+     * A MarkDown rule constructor.
+     * @param name its name
+     * @param regex the regex
+     * @param template the group replacing template
+     */
     public MarkDownRule(String name, String regex, String template) {
         this.name = name;
         this.regex = regex;
         this.template = template;
     }
 
+    /**
+     * Apply the current rule on a specified content
+     * @param content specified content
+     * @return the processed content
+     */
     public String apply(String content) {
         Matcher matcher = Pattern.compile(this.regex).matcher(content);
         StringBuilder output = new StringBuilder();

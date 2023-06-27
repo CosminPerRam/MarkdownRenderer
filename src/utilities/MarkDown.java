@@ -2,7 +2,13 @@ package utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import static utilities.Logger.Log;
+
+/**
+ * The markdown rules holder and processor.
+ */
 public class MarkDown {
     public static List<MarkDownRule> rules = new ArrayList<>(){{
         add(new MarkDownRule("Header 3rd Order", "#{3}\\s?([^\\n]+)", "<h3>$1</h3>"));
@@ -19,14 +25,40 @@ public class MarkDown {
         add(new MarkDownRule("List", "([^\\n]+)(\\-)([^\\n]+)", "<ul><li>$3</li></ul>"));
     }};
 
+    /**
+     * Adds a rule to the rules list.
+     * @param rule the rule
+     */
     public static void addRule(MarkDownRule rule) {
         rules.add(rule);
+        Log().info("Markdown rule added.");
     }
 
+    /**
+     * Removes a rule from the rules list.
+     * @param name the rule's name
+     * @return whether a rule has been removed or not
+     */
+    public static boolean removeRule(String name) {
+        boolean removed = rules.removeIf(rule -> Objects.equals(rule.name, name));
+        if(removed) {
+            Log().info("Markdown rule removed.");
+        }
+        return removed;
+    }
+
+    /**
+     * Create a new Markdown processor.
+     */
     public MarkDown() {
 
     }
 
+    /**
+     * Convert a text content to markdown content
+     * @param content specified content
+     * @return processed content
+     */
     public String convert(String content) {
         for(MarkDownRule rule : rules) {
             content = rule.apply(content);

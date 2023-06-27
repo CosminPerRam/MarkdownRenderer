@@ -28,5 +28,7 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-/.idea/
+.idea/
+!.idea/libraries/
 *.txt
+javadoc/
