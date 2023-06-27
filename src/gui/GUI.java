@@ -19,7 +19,7 @@ public class GUI {
     static public MarkdownRenderArea markdownRenderArea;
 
     public static void initialize() {
-        frame = new Frame("Markdown Renderer");
+        frame = new Frame("CosminPerRam - Markdown Renderer");
         frame.window.setSize(1280, 720);
         frame.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
